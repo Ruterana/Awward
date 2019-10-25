@@ -11,3 +11,8 @@ class Profile(models.Model):
     def search_by_name(cls,search_term):
         project = cls.objects.filter(name__icontains=search_term)
         return project
+class Project(models.Model):
+    image_path = models.ImageField(upload_to = 'pictures/')
+    project_title= models.CharField(max_length=30)  
+    description = models.CharField(max_length=200)
+    link =models.CharField(max_length=1200)
