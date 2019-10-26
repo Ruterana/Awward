@@ -2,7 +2,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import NewpostForm
+from .forms import NewpostForm,NewProfileForm
 from  .models import Profile,Project
 
 # Create your views here.
@@ -40,3 +40,23 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'all-file/search.html',{"message":message})
+@login_required(login_url='/accounts/login/')
+def addprofile(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            
+            profile.save()
+        return redirect('viewprofile')
+
+    else:
+        form = NewProfileForm
+    return render(request, 'profile.html', {"form": form})
+@login_required(login_url='/accounts/login/')
+def viewprofile(request):
+    current_user = request.user
+    profile = Profile.objects.filter(user = current_user).first()
+    return render(request,'viewprofile.html',{'profile':profile})
