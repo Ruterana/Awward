@@ -8,8 +8,8 @@ urlpatterns=[
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^new/profile$', views.addprofile, name='profile'),
     url(r'^new/viewprofile$', views.viewprofile, name='viewprofile'),
-    url(r'^api/project/$', views.ProjectList.as_view(),name='project')
-    
+    url(r'^api/project/$', views.ProjectList.as_view(),name='project'),
+    url(r'^api/profile/$', views.ProfileList.as_view(),name='profile')
 
     
 ]

@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.http  import HttpResponse
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializer import ProjectSerializer
+from .serializer import ProjectSerializer,ProfileSerializer
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -76,4 +76,9 @@ class ProjectList(APIView):
     def get(self, request, format=None):
         all_project = Project.objects.all()
         serializers = ProjectSerializer(all_project, many=True)
+        return Response(serializers.data)
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profile = Profile.objects.all()
+        serializers = ProfileSerializer(all_profile, many=True)
         return Response(serializers.data)
