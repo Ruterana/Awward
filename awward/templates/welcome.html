@@ -3,4 +3,33 @@
 
 {% block content %}
 {{block.super}}
+<div class="container">
+
+    <!-- Looping through news   -->
+    {% for project in projects %}
+  
+    <div class="row">
+      <!-- displaying project -->
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <h2 class="text-center"> {{ news_item.title }} </h2>
+      </div>
+  
+    </div>
+
+        
+       <h2 class="text-center" style="font-family: 'Shrikhand', cursive;"> {{ project.project_title}} </h2>
+       <p class="text-center">{{ project.description }}</p>
+
+
+ 
+ 
+    <img src="{{project.image_path.url}}"  alt="" width="514" style="margin-left:10px">&nbsp;&nbsp;&nbsp;&nbsp;
+    
+          
+       
+    </div>
+    
+        {%endfor%}
+
+    
 {% endblock %}
