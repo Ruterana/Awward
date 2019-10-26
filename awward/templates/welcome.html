@@ -15,7 +15,7 @@
         </div>
         <h2> {{ project.project_title}} </h2>
         <p>{{ project.description }}</p>
-        <img src="{{project.image_path.url}}" style="width:400px; height:400px;" alt="Image">
+        <img src="{{project.image_path.url}}" value="http://127.0.0.1:8000{{project.image_path.url}}" style="width:400px; height:400px;" alt="Image">
  <!-- The link field -->
  <input type="link" value="http://127.0.0.1:8000{{project.image_path.url}}" id="{{project.id}}">
 
