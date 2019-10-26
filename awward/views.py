@@ -4,10 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import NewpostForm,NewProfileForm
 from  .models import Profile,Project
-
+from django.http import JsonResponse
 # Create your views here.
 from django.http  import HttpResponse
-from django.contrib.auth.decorators import login_required
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProjectSerializer
+
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def welcome(request):
@@ -60,3 +63,17 @@ def viewprofile(request):
     current_user = request.user
     profile = Profile.objects.filter(user = current_user).first()
     return render(request,'viewprofile.html',{'profile':profile})
+def project(request):
+    name = request.POST.get('your_name')
+    email = request.POST.get('email')
+
+    recipient = NewsLetterRecipients(name=name, email=email)
+    recipient.save()
+    send_welcome_email(name, email)
+    data = {'success': 'You have been successfully added to mailing list'}
+    return JsonResponse(data)
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        all_project = Project.objects.all()
+        serializers = ProjectSerializer(all_project, many=True)
+        return Response(serializers.data)
