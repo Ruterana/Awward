@@ -8,19 +8,20 @@
 </head>
 
 <body>
-    
-<h3 style="text-align: center;">The awards of design, creativity and innovation on the internet</h3>
 
-<hr>
-<h1 style="text-align: center;"><strong>Awwwards.</strong></h1>
+    <h3 style="text-align: center;">The awards of design, creativity and innovation on the internet</h3>
+
+    <hr>
+    <h1 style="text-align: center;color: black;"><strong>Awwwards.</strong></h1>
     <nav class="navbar fixed-top navbar-light bg-light">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{%url 'welcome'%}">awward</a>
             </div>
 
-
-            <a href="{%url 'profile'%}"> ADD profile</a>
+            <div class="col-sm-4 col-md-4 navbar-right"> <a href="{%url 'new-post'%}">Post</a></div>
+        
+            
 
             <!-- Adding a search form  -->
             <div class="col-sm-4 col-md-4 navbar-right">
@@ -37,7 +38,7 @@
 
                 </form>
             </div>
-            <a href="{%url 'viewprofile'%}"> viewprofile</a>
+            
             <!-- search form end-->
             <div class="col-sm-4 col-md-4">
                 {% if user.is_authenticated %}
@@ -51,16 +52,22 @@
                             <li>
                                 <a href="{%url 'welcome'%}">Home</a>
                             </li>
-                            <a href="{%url 'new-post'%}">Post</a>
+                           
                             <li>
                                 <a href="/accounts/password/change">Change Password</a>
                             </li>
                             <li>
                                 <a href="{%url 'project'%}"> projectApi</a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="{%url 'profile-ipi'%}"> profileApi</a>
-                            </li> 
+                            </li>
+                            <li>
+                                <a href="{%url 'viewprofile'%}"> viewprofile</a>
+                            </li>
+                            <li>
+                             <a href="{%url 'profile'%}"> ADD profile</a>
+                            </li>
                             <li>
 
                                 <a href="/logout">Logout</a>
@@ -78,7 +85,7 @@
             </div>
 
         </div>
-
+        
     </nav>
     <hr>
 </body>
