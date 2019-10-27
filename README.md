@@ -4,7 +4,7 @@ Awward
 Charlene Niyitanga
 
 ## Description
-awwwardz is a clone of the website Awwwards. It allows a user to post a project he/she has created and get it reviewed by his/her peers.
+awwwardz is a clone of the website Awwards. It allows a user to post a project he/she has created and get it reviewed by his/her peers.
 
 ##  User Stories
 Sign in to the application to start using.
