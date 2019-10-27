@@ -18,8 +18,9 @@
     <!-- The link field -->
     <!-- <input type="link" value="https://charleneawward.herokuapp.com/{{project.image_path.url}}" id="{{project.id}}"><br> -->
    
+  
+   <button class="btn btn-outline-success" style="border-radius:25px;"><a href="{{project.link}}" style="color: chocolate;">visite site</a></button>
    <a href="{% url 'rating' id=project.id %}" data-toggle="modal" data-target="#{{project.id}}" >Vote</a><br>
-   <button class="btn btn-outline-success" style="border-radius:25px;"><a href="{{project.link}}" style="color: red;">visite site</a></button>
     <p><strong>design:</strong>{{project.design}}</p>
            <p><strong>usability:</strong>{{project.usability}}</p>
            <p><strong>content:</strong>{{project.content}}</p>
@@ -28,17 +29,6 @@
   </div>
   {%endfor%}
 </div>
-
-<!-- <script>
-  function copyLink(project_title) {
-    console.log("copied");
-    var copyLink = document.getElementById("project.id");
-    copyText.select();
-    document.execCommand("copy");
-    alert("Link copied to clipboard: " + copyText.value);
-  }
-
-</script> -->
 
 <div class="modal fade" id="{{project.id}}" tabindex="-1" role="dialog"  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

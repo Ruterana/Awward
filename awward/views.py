@@ -11,6 +11,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializer import ProjectSerializer,ProfileSerializer
 from django.db.models import Max,F
+
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def welcome(request):

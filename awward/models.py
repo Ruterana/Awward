@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 # Create your models here.
 class Profile(models.Model):
     profile_image = models.ImageField(upload_to = 'pictures/')
     bio= models.CharField(max_length=30)
-    user= models.ForeignKey(User)
+    user= models.ForeignKey(User,on_delete=models.CASCADE)
     def save_profile(self):
         self.save()
     @classmethod
@@ -13,7 +14,7 @@ class Profile(models.Model):
         return project
 class Project(models.Model):
     image_path = models.ImageField(upload_to = 'pictures/')
-    project_title= models.CharField(max_length=30)  
+    title= models.CharField(max_length=30)  
     description = models.CharField(max_length=200)
     link = models.URLField(max_length=128, db_index=True, unique=True, null=True)
     design = models.IntegerField(choices=list(zip(range(0, 11), range(0, 11))), default=0)
