@@ -15,7 +15,7 @@ class Project(models.Model):
     image_path = models.ImageField(upload_to = 'pictures/')
     project_title= models.CharField(max_length=30)  
     description = models.CharField(max_length=200)
-    link =models.CharField(max_length=1200)
+    link = models.URLField(max_length=128, db_index=True, unique=True, null=True)
     design = models.IntegerField(choices=list(zip(range(0, 11), range(0, 11))), default=0)
     usability = models.IntegerField(choices=list(zip(range(0, 11), range(0, 11))), default=0)
     content = models.IntegerField(choices=list(zip(range(0, 11), range(0, 11))), default=0)

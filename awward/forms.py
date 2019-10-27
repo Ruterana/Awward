@@ -3,7 +3,7 @@ from django import forms
 class NewpostForm(forms.ModelForm):
     class Meta:
         model =Project
-        exclude = [' project_title','link']
+        exclude = [' project_title']
 class NewProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
