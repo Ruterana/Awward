@@ -3,34 +3,77 @@
 
 {% block content %}
 {{block.super}}
-<div class="container">
 
-    <!-- Looping through news   -->
-    <div class="row">
-        {% for project in projects %}
 
-        <!-- displaying project -->
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            
-        </div>
-        <h2> {{ project.project_title}} </h2>
-        <p>{{ project.description }}</p>
-        <img src="{{project.image_path.url}}" value="http://127.0.0.1:8000{{project.image_path.url}}" style="width:400px; height:400px;" alt="Image">
- <!-- The link field -->
- <input type="link" value="http://127.0.0.1:8000{{project.image_path.url}}" id="{{project.id}}">
+<!-- Looping through news   -->
+<div class="row">
+  {% for project in projects %}
 
-    </div>
+  <div class="col-md-4">
+    <h2> {{ project.project_title}} </h2>
+    <!-- <p>{{ project.description }}</p><br> -->
+    <!-- <img src="{{project.image_path.url}}" value="http://127.0.0.1:8000{{project.image_path.url}}" style="width:400px; height:400px;" alt="Image"> -->
+    <img style="width:400px; height: 400px;" src="{{project.image_path.url}}" class="img-responsive" alt="Image" class="img-thumbnail photo"
+      alt="Image" data-toggle="modal" data-target="#{{pic.id}}">
+    <!-- The link field -->
+    <input type="link" value="http://127.0.0.1:8000{{project.image_path.url}}" id="{{project.id}}"><br>
+   <a href="{% url 'rating' id=project.id %}" data-toggle="modal" data-target="#{{project.id}}" >Vote</a>
+    <p><strong>design:</strong>{{project.design}}</p>
+           <p><strong>usability:</strong>{{project.usability}}</p>
+           <p><strong>content:</strong>{{project.content}}</p>
+           <p>By <span>{{project.user.username}}</span> with <span>{{rating}}</span></p>
 
-    {%endfor%}
+  </div>
+  {%endfor%}
 </div>
+
 <script>
-    function copyLink(project_title) {
-      console.log("copied");
-      var copyLink = document.getElementById("project.id");
-      copyText.select();
-      document.execCommand("copy");
-      alert("Link copied to clipboard: " + copyText.value);
-    }
-    
-  </script>
+  function copyLink(project_title) {
+    console.log("copied");
+    var copyLink = document.getElementById("project.id");
+    copyText.select();
+    document.execCommand("copy");
+    alert("Link copied to clipboard: " + copyText.value);
+  }
+
+</script>
+
+<div class="modal fade" id="{{project.id}}" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><strong>{{project.project_title}}</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          
+        </button>
+      </div>
+      <div class="modal-body">
+         <img src="{{project.image_path.url}}" class="img-responsive" alt="Image">
+         <p><strong>design:</strong>{{project.design}}</p>
+         <p><strong>usability:</strong>{{project.usability}}</p>
+         <p><strong>content:</strong>{{project.content}}</p>
+         
+
+         <!-- <p class="text-center">By <span>{{p.user.username}}</span> with <span>{{rating}}</span></p> -->
+        
+      </div>
+      <!-- Found this modal footer of copying a link on github -->
+      <div class="modal-footer">
+          <input class="form-control" type="text" value="{{ p.image.url }}" id="link">
+          <!-- <a onclick="myFunction()"><button type="button"  class="btn btn-dark">Copy Link</button></a> -->
+
+          <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+          
+        </div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+</div>
+
 {% endblock %}

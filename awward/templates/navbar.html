@@ -13,8 +13,8 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="{%url 'welcome'%}">awward</a>
             </div>
-    
-            
+
+
             <a href="{%url 'profile'%}"> ADD profile</a>
 
             <!-- Adding a search form  -->
@@ -53,23 +53,23 @@
                             <li><a href="{%url 'project'%}"> projectApi</a></li>
                             <li><a href="{%url 'profile'%}"> profileApi</a></li>
                             <li>
-                                
+
                                 <a href="/logout">Logout</a>
                             </li>
-                           
+
                         </ul>
                     </li>
                 </ul>
                 {% else %}
-                <li>
-                    <a class='btn btn-default' href="/accounts/login">Login</a>
+
+                <a class='btn btn-default' href="/accounts/login">Login</a>
                 </li>
 
                 {% endif %}
             </div>
-           
+
         </div>
-        
+
     </nav>
 </body>
 
