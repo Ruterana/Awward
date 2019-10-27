@@ -10,12 +10,12 @@
   {% for project in projects %}
 <div class= "container">
   <div class="col-md-4">
-    <h2> {{ project.title}} </h2>
-    <!-- <p>{{ project.description }}</p><br> -->
+    
     
     <img style="width:400px; height: 400px;" src="{{project.image_path.url}}" class="img-responsive" alt="Image" class="img-thumbnail photo"
       alt="Image" data-toggle="modal" data-target="#{{pic.id}}">
-    
+      <h2> {{ project.title}} </h2>
+      <!-- <p>{{ project.description }}</p><br> -->
    <button class="btn btn-outline-success" style="border-radius:25px;"><a href="{{project.link}}" style="color: rgb(85, 7, 7);">visite site</a></button><br>
    
    
