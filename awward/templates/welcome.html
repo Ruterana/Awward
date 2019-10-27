@@ -8,23 +8,22 @@
 <!-- Looping through news   -->
 <div class="row">
   {% for project in projects %}
-
+<div class= "container">
   <div class="col-md-4">
-    <h2> {{ project.project_title}} </h2>
+    <h2> {{ project.title}} </h2>
     <!-- <p>{{ project.description }}</p><br> -->
-    <!-- <img src="{{project.image_path.url}}" value="http://127.0.0.1:8000{{project.image_path.url}}" style="width:400px; height:400px;" alt="Image"> -->
+    
     <img style="width:400px; height: 400px;" src="{{project.image_path.url}}" class="img-responsive" alt="Image" class="img-thumbnail photo"
       alt="Image" data-toggle="modal" data-target="#{{pic.id}}">
-    <!-- The link field -->
-    <!-- <input type="link" value="https://charleneawward.herokuapp.com/{{project.image_path.url}}" id="{{project.id}}"><br> -->
+    
+   <button class="btn btn-outline-success" style="border-radius:25px;"><a href="{{project.link}}" style="color: rgb(85, 7, 7);">visite site</a></button><br>
    
-  
-   <button class="btn btn-outline-success" style="border-radius:25px;"><a href="{{project.link}}" style="color: chocolate;">visite site</a></button>
-   <a href="{% url 'rating' id=project.id %}" data-toggle="modal" data-target="#{{project.id}}" >Vote</a><br>
+   
+   <a href="{% url 'rating' id=project.id %}" data-toggle="modal" data-target="#{{project.id}}" >Vote</a>
     <p><strong>design:</strong>{{project.design}}</p>
            <p><strong>usability:</strong>{{project.usability}}</p>
            <p><strong>content:</strong>{{project.content}}</p>
-           <p>By <span>{{project.user.username}}</span> with <span>{{rating}}</span></p>
+           <!-- <p>By <span>{{project.user}}</span> with <span>{{rating}}</span></p> -->
 
   </div>
   {%endfor%}
@@ -34,7 +33,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><strong>{{project.project_title}}</strong></h5>
+        <h5 class="modal-title"><strong>{{project.title}}</strong></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           
@@ -59,5 +58,5 @@
 </div>
 
 </div>
-
+</div>
 {% endblock %}

@@ -3,7 +3,7 @@ from .models import Project,Profile
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model =Project
-        fields = ('image_path', 'project_title', 'description')
+        fields = ('image_path', 'title', 'description')
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model =Profile
