@@ -31,6 +31,6 @@ class Project(models.Model):
         self.delete()          
     
     @classmethod
-    def search_project(cls,title):
+    def search_by_title(cls,title):
         title = cls.objects.filter(title__icontains=title)
         return  title
